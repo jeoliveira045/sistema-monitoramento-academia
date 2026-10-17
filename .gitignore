@@ -1,0 +1,10 @@
+.idea
+.metals
+.project
+.sdkmanrc
+.settings
+.bloop
+.classpath
+.factorypath
+lastest-talk.txt
+target/**
