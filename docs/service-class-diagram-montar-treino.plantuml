@@ -1,0 +1,30 @@
+@startuml
+
+interface ITreino {
+    + exec(): Treino
+}
+
+class TreinoFactory{
+    - treino: ITreino
+    + TreinoFactory(treino: ITreino)
+    + createTreino(): Treino
+}
+
+class TreinoABC {
+    + exec(): Treino
+}
+
+class TreinoGVT {
+    + exec(): Treino
+}
+
+class TreinoFullBody {
+    + exec(): Treino
+}
+
+
+TreinoFactory -r-> ITreino
+TreinoABC .u.|> ITreino
+TreinoFullBody .u.|> ITreino
+TreinoGVT .u.|> ITreino
+@enduml

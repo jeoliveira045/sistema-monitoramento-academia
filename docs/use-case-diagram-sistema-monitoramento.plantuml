@@ -1,0 +1,59 @@
+@startuml
+
+left to right direction
+skinparam linetype ortho
+
+actor "Usuário" as Usuario
+actor Professor
+actor Administrador
+actor Aluno
+
+Aluno --|> Usuario
+Professor --|> Usuario
+Administrador --|> Professor
+
+
+rectangle "Sistema de Monitoramento de Alunos de Academia" {
+    ' ---- Comuns a todos os usuários ----
+    usecase "Realizar login" as UC01
+    usecase "Realizar logout" as UC02
+    usecase "Visualizar perfil" as UC03
+
+    ' ---- Aluno ----
+    usecase "Consultar histórico de exercícios" as UC04
+    usecase "Marcar exercício como realizado" as UC05
+
+    ' ---- Professor ----
+    usecase "Listar alunos" as UC06
+    usecase "Registrar avaliação física" as UC07
+    usecase "Cadastrar exercício" as UC08
+    usecase "Montar treino" as UC09
+    usecase "Associar exercício ao treino" as UC10
+
+    ' ---- Administrador ----
+    usecase "Gerenciar professores" as UC11
+}
+
+Usuario --> UC01
+Usuario --> UC02
+Usuario --> UC03
+
+Aluno --> UC04
+Aluno --> UC05
+
+Professor --> UC04
+Professor --> UC06
+Professor --> UC07
+Professor --> UC08
+Professor --> UC09
+Professor --> UC10
+
+Administrador --> UC11
+
+UC09 .> UC10 : <<include>>
+
+Administrador -[hidden]- Professor
+Usuario -[hidden]- Professor
+Usuario -[hidden]- Aluno
+
+@enduml

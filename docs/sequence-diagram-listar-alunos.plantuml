@@ -1,0 +1,38 @@
+@startuml Diagram_Sequence_Listar_Alunos
+
+skinparam linetype ortho
+
+actor Usuario
+participant AlunoController
+participant ListarAlunosProxy
+participant ListarAlunosService
+participant AlunoRepository
+database Database
+
+Usuario -> AlunoController : listarAlunos()
+AlunoController -> ListarAlunosProxy : checkAccess()
+alt usuario é professor ou administrador
+    ListarAlunosProxy -> Database: verificaRole
+    Database -> ListarAlunosProxy : acessoValidado()
+    ListarAlunosProxy -> ListarAlunosService : exec()
+    ListarAlunosService -> AlunoRepository: findAll()
+    AlunoRepository -> Database
+    Database -> AlunoRepository: List<Aluno>
+    AlunoRepository -> ListarAlunosService: List<Aluno>
+    ListarAlunosService -> ListarAlunosProxy: List<Aluno>
+    ListarAlunosProxy -> AlunoController: List<Aluno>
+    AlunoController -> Usuario: List<Aluno>
+else O usuario é aluno
+    ListarAlunosProxy -> Database : verificaRole
+    Database -> ListarAlunosProxy : acessoNegado
+    ListarAlunosProxy -> AlunoController : 403
+    AlunoController -> Usuario : 403
+end
+
+
+
+
+
+
+
+@enduml

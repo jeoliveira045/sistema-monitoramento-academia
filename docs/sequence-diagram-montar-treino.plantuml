@@ -1,0 +1,19 @@
+@startuml
+
+actor Usuario
+participant TreinoController
+participant MontarTreinoService
+participant TreinoFactory
+participant ITreino
+
+Usuario -> TreinoController : montarTreino(number)
+TreinoController -> MontarTreinoService : montarTreino(number)
+MontarTreinoService -> TreinoFactory : montarTreino(number)
+TreinoFactory -> ITreino : montarTreino(number)
+
+ITreino --> TreinoFactory : Treino
+TreinoFactory --> MontarTreinoService : Treino
+MontarTreinoService --> TreinoController : Treino
+TreinoController --> Usuario : Treino
+
+@enduml

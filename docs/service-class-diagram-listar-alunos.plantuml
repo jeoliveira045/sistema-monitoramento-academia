@@ -1,0 +1,27 @@
+@startuml Listar-Alunos-Diagram-Class
+
+skinparam linetype ortho
+
+interface IListarAlunosService {
+    + listarAlunos(): List<Aluno>
+}
+
+class ListarAlunosService{
+    - alunosRepository: AlunoRepository
+    + listarAlunos(): List<Aluno>
+}
+
+class ListarAlunosProxy {
+    - service: ListarAlunosService
+
+    + ListarAlunosProxy(service: IListarAlunosService)
+    + checkAccess(): Boolean
+    + listarAlunos(): List<Alunos>
+}
+
+ListarAlunosProxy -u-|> IListarAlunosService
+ListarAlunosService -u-|> IListarAlunosService
+ListarAlunosProxy -l-> ListarAlunosService
+
+
+@enduml
