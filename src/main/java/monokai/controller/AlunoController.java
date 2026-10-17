@@ -52,7 +52,7 @@ public class AlunoController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O id do aluno deve vir do sistema de usuários");
 		}
 		aluno.calcularImc();
-		return ResponseEntity.status(HttpStatus.CREATED).body(alunoRepository.save(aluno));
+		return ResponseEntity.status(HttpStatus.CREATED).body(alunoService.save(aluno));
 	}
 
 	@PutMapping("/{id}")
@@ -62,7 +62,7 @@ public class AlunoController {
 		}
 		aluno.setId(id);
 		aluno.calcularImc();
-		return ResponseEntity.ok(alunoRepository.save(aluno));
+		return ResponseEntity.ok(alunoService.save(aluno));
 	}
 
 	@DeleteMapping("/{id}")
