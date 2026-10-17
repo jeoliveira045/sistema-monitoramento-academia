@@ -21,10 +21,6 @@ public class AlunoService {
 	private ItemExercicioRepository itemExercicioRepository;
 	private TreinoRepository treinoRepository;
 
-	public List<Aluno> findAll() {
-		return this.alunoRepository.findAll();
-	}
-
 	public Aluno findById(Long id) {
 
 		var aluno = alunoRepository.findById(id);
@@ -47,27 +43,17 @@ public class AlunoService {
 	public Aluno save(Aluno aluno) {
 
 		var treino = aluno.getTreinos();
-
 		var alunoSalvo = alunoRepository.save(aluno);
-
 		treino.forEach(treino1 -> {
 			var treinoSalvo = treinoRepository.save(alunoSalvo.getId(), treino1);
-
 			var itemExercicioList = treino1.getItens();
-
 			var itemExercicioSalvo = new ArrayList<ItemExercicio>();
-
 			itemExercicioList.forEach(item -> {
-
 				itemExercicioSalvo.add(itemExercicioRepository.save(treinoSalvo.getId(), item));
 			});
-
 			treino1.setItens(itemExercicioSalvo);
-
 			alunoSalvo.adicionarTreino(treino1);
-
 		});
-
 		return aluno;
 
 	}

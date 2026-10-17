@@ -38,7 +38,7 @@ public class AlunoController {
 		if (situacao != null) {
 			return ResponseEntity.ok(alunoRepository.findBySituacao(situacao));
 		}
-		return ResponseEntity.ok(alunoService.findAll());
+		return ResponseEntity.ok(alunoRepository.findAll());
 	}
 
 	@GetMapping("/{id}")
