@@ -1,0 +1,26 @@
+# Itens do treino.
+# Ids assumem um banco recém-criado após exercicio.http, aluno.http e treino.http
+# (itens 1 a 8 já existem, então este POST cria o item 9).
+
+@baseUrl = http://localhost:8080
+
+### Criar item no treino 1 (item 9)
+POST {{baseUrl}}/treinos/1/itens
+Content-Type: application/json
+
+< ./json/item-exercicio/criar-item-exercicio.json
+
+### Listar itens do treino
+GET {{baseUrl}}/treinos/1/itens
+
+### Buscar item por id
+GET {{baseUrl}}/treinos/1/itens/9
+
+### Atualizar item
+PUT {{baseUrl}}/treinos/1/itens/9
+Content-Type: application/json
+
+< ./json/item-exercicio/atualizar-item-exercicio.json
+
+### Remover item
+DELETE {{baseUrl}}/treinos/1/itens/9

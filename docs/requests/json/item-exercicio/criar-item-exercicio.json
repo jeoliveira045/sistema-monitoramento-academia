@@ -1,0 +1,10 @@
+{
+  "serie": 3,
+  "repeticoes": 15,
+  "tipoExercicio": "NORMAL",
+  "exercicio": {
+    "id": 2,
+    "nomeExercicio": "Agachamento livre",
+    "musculo": "Quadríceps"
+  }
+}

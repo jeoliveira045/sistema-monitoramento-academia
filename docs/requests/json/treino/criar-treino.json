@@ -1,0 +1,37 @@
+{
+  "treinoPeriodo": "SEMANAL",
+  "tipo": "MUSCULACAO",
+  "treinoMesVigente": "2026-10",
+  "itens": [
+    {
+      "serie": 4,
+      "repeticoes": 10,
+      "tipoExercicio": "NORMAL",
+      "exercicio": {
+        "id": 1,
+        "nomeExercicio": "Supino reto com barra",
+        "musculo": "Peitoral"
+      }
+    },
+    {
+      "serie": 4,
+      "repeticoes": 12,
+      "tipoExercicio": "DROPSET",
+      "exercicio": {
+        "id": 2,
+        "nomeExercicio": "Agachamento livre",
+        "musculo": "Quadríceps"
+      }
+    },
+    {
+      "serie": 3,
+      "repeticoes": 10,
+      "tipoExercicio": "BISET",
+      "exercicio": {
+        "id": 3,
+        "nomeExercicio": "Remada curvada",
+        "musculo": "Costas"
+      }
+    }
+  ]
+}

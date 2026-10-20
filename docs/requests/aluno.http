@@ -1,0 +1,37 @@
+# Alunos — o id vem do sistema de usuários e o IMC é calculado no save.
+# O save do aluno também salva os treinos e os itens de cada treino;
+# os exercícios precisam existir antes (rode exercicio.http primeiro).
+
+@baseUrl = http://localhost:8080
+
+### Criar aluno 1 (cria o treino 1 com os itens 1, 2 e 3)
+POST {{baseUrl}}/alunos
+Content-Type: application/json
+
+< ./json/aluno/criar-aluno.json
+
+### Criar aluno 2 (cria o treino 2 com os itens 4 e 5)
+POST {{baseUrl}}/alunos
+Content-Type: application/json
+
+< ./json/aluno/criar-aluno-2.json
+
+### Listar alunos
+GET {{baseUrl}}/alunos
+
+### Listar alunos ativos
+GET {{baseUrl}}/alunos?situacao=ATIVO
+
+### Buscar aluno por id (com treinos e itens)
+GET {{baseUrl}}/alunos/1
+
+### Atualizar aluno (atualiza o treino 1 e os itens 1, 2 e 3 pelos ids)
+PUT {{baseUrl}}/alunos/1
+Content-Type: application/json
+
+< ./json/aluno/atualizar-aluno.json
+
+### Remover aluno
+DELETE {{baseUrl}}/alunos/1
+
+

@@ -1,0 +1,10 @@
+{
+  "serie": 5,
+  "repeticoes": 8,
+  "tipoExercicio": "BISET",
+  "exercicio": {
+    "id": 1,
+    "nomeExercicio": "Supino reto com barra",
+    "musculo": "Peitoral"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "nome": "Maria",
+  "sobrenome": "Silva Souza",
+  "dtNascimento": "1995-04-12",
+  "cpf": "123.456.789-09",
+  "endereco": "Rua das Flores, 100 - Centro",
+  "tipoSanguineo": "O_POSITIVO",
+  "whatsapp": "(11) 98765-4321",
+  "email": "maria.silva@example.com",
+  "situacao": "ATIVO",
+  "foto": null,
+  "peso": 60.8,
+  "altura": 1.65,
+  "percentualGorduraCorporal": 22.1,
+  "circunferencias": "Cintura: 70cm; Quadril: 97cm; Braço: 28cm; Coxa: 55cm",
+  "historicoLesoes": "Entorse no tornozelo direito em 2021",
+  "condicoesMedicas": "Nenhuma",
+  "usoMedicamentosContinuos": "Nenhum",
+  "restricoesMedicas": "Evitar saltos de alto impacto",
+  "parQ": "Todas as respostas negativas",
+  "atestadoMedico": "Apta para atividades físicas - emitido em 2026-09-01",
+  "treinos": [
+    {
+      "id": 1,
+      "treinoPeriodo": "MENSAL",
+      "tipo": "MUSCULACAO",
+      "treinoMesVigente": "2026-11",
+      "itens": [
+        {
+          "id": 1,
+          "serie": 5,
+          "repeticoes": 8,
+          "tipoExercicio": "NORMAL",
+          "exercicio": {
+            "id": 1,
+            "nomeExercicio": "Supino reto com barra",
+            "musculo": "Peitoral"
+          }
+        },
+        {
+          "id": 2,
+          "serie": 4,
+          "repeticoes": 10,
+          "tipoExercicio": "DROPSET",
+          "exercicio": {
+            "id": 2,
+            "nomeExercicio": "Agachamento livre",
+            "musculo": "Quadríceps"
+          }
+        },
+        {
+          "id": 3,
+          "serie": 4,
+          "repeticoes": 10,
+          "tipoExercicio": "BISET",
+          "exercicio": {
+            "id": 3,
+            "nomeExercicio": "Remada curvada",
+            "musculo": "Costas"
+          }
+        }
+      ]
+    }
+  ]
+}

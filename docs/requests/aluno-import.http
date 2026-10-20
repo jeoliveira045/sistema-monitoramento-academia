@@ -1,0 +1,9 @@
+# Importação de alunos — busca os alunos no sistema de usuários (api.baseurl):
+# o service faz login como service-account em /auth/login e depois chama /alunos
+# com o token. O sistema de usuários precisa estar rodando.
+
+@baseUrl = http://localhost:8080
+
+### Importar alunos do sistema de usuários
+GET {{baseUrl}}/import/alunos
+Accept: application/json

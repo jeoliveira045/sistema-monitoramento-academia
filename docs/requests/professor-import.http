@@ -1,0 +1,9 @@
+# Importação de professores — busca os professores no sistema de usuários (api.baseurl):
+# o service faz login como service-account em /auth/login e depois chama /professores
+# com o token. O sistema de usuários precisa estar rodando.
+
+@baseUrl = http://localhost:8080
+
+### Importar professores do sistema de usuários
+GET {{baseUrl}}/import/professores
+Accept: application/json

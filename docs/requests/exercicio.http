@@ -1,0 +1,37 @@
+# Exercícios — execute antes de aluno.http: os itens dos treinos referenciam
+# os exercícios 1 (supino), 2 (agachamento) e 3 (remada).
+
+@baseUrl = http://localhost:8080
+
+### Criar supino reto (id 1)
+POST {{baseUrl}}/exercicios
+Content-Type: application/json
+
+< ./json/exercicio/criar-supino-reto.json
+
+### Criar agachamento livre (id 2)
+POST {{baseUrl}}/exercicios
+Content-Type: application/json
+
+< ./json/exercicio/criar-agachamento-livre.json
+
+### Criar remada curvada (id 3)
+POST {{baseUrl}}/exercicios
+Content-Type: application/json
+
+< ./json/exercicio/criar-remada-curvada.json
+
+### Listar exercícios
+GET {{baseUrl}}/exercicios
+
+### Listar exercícios por músculo
+GET {{baseUrl}}/exercicios?musculo=Peitoral
+
+### Buscar exercício por id
+GET {{baseUrl}}/exercicios/1
+
+### Atualizar exercício
+PUT {{baseUrl}}/exercicios/1
+Content-Type: application/json
+
+< ./json/exercicio/atualizar-exercicio.json

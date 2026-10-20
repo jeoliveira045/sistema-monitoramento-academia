@@ -1,0 +1,43 @@
+{
+  "id": 2,
+  "nome": "João",
+  "sobrenome": "Pereira",
+  "dtNascimento": "1988-11-30",
+  "cpf": "987.654.321-00",
+  "endereco": "Av. Brasil, 2500 - Apto 31",
+  "tipoSanguineo": "A_NEGATIVO",
+  "whatsapp": "(21) 99876-5432",
+  "email": "joao.pereira@example.com",
+  "situacao": "INATIVO",
+  "peso": 88.0,
+  "altura": 1.80,
+  "treinos": [
+    {
+      "treinoPeriodo": "QUINZENAL",
+      "tipo": "FUNCIONAL",
+      "treinoMesVigente": "2026-10",
+      "itens": [
+        {
+          "serie": 3,
+          "repeticoes": 15,
+          "tipoExercicio": "NORMAL",
+          "exercicio": {
+            "id": 2,
+            "nomeExercicio": "Agachamento livre",
+            "musculo": "Quadríceps"
+          }
+        },
+        {
+          "serie": 3,
+          "repeticoes": 12,
+          "tipoExercicio": "NORMAL",
+          "exercicio": {
+            "id": 3,
+            "nomeExercicio": "Remada curvada",
+            "musculo": "Costas"
+          }
+        }
+      ]
+    }
+  ]
+}
