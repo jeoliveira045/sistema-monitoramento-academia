@@ -6,7 +6,6 @@ import monokai.repository.AlunoRepository;
 import monokai.repository.ItemExercicioRepository;
 import monokai.repository.TreinoRepository;
 
-import java.util.List;
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;

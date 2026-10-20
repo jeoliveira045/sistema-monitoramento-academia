@@ -9,7 +9,7 @@ skinparam class {
 
 enum Situacao {
     ATIVO = 1
-    INATIVO = 0
+    INATIVO = 2
 }
 
 enum TipoSanguineo {
