@@ -33,7 +33,7 @@ public class AlunoImportService {
 	private String apiBaseurl;
 
 	public List<Aluno> exec() throws URISyntaxException, IOException, InterruptedException {
-		String token = this.token().getToken();
+		String token = this.token().token();
 
 		HttpRequest httpRequest = HttpRequest.newBuilder().uri(new URI(apiBaseurl + "/alunos"))
 				.header("Authorization", "Bearer " + token).header("Accept", "application/json")
@@ -88,7 +88,7 @@ public class AlunoImportService {
 		}
 
 		LoginResponse loginResponse = objectMapper.readValue(response.body(), LoginResponse.class);
-		if (loginResponse.getToken() == null || loginResponse.getToken().isBlank()) {
+		if (loginResponse.token() == null || loginResponse.token().isBlank()) {
 			throw new IllegalStateException("Login da service-account não retornou token");
 		}
 

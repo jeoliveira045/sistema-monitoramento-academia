@@ -33,7 +33,7 @@ public class ProfessorImportService {
 	private String apiBaseurl;
 
 	public List<Professor> exec() throws URISyntaxException, IOException, InterruptedException {
-		String token = this.token().getToken();
+		String token = this.token().token();
 
 		HttpRequest httpRequest = HttpRequest.newBuilder().uri(new URI(apiBaseurl + "/professores"))
 				.header("Authorization", "Bearer " + token).header("Accept", "application/json")
@@ -53,8 +53,9 @@ public class ProfessorImportService {
 	}
 
 	/**
-	 * Converte o ProfessorImport no Professor do monitoramento. Quando o professor já existe, parte do
-	 * registro salvo para não perder os dados que não vêm do sistema de usuários (whatsapp e foto).
+	 * Converte o ProfessorImport no Professor do monitoramento. Quando o professor
+	 * já existe, parte do registro salvo para não perder os dados que não vêm do
+	 * sistema de usuários (whatsapp e foto).
 	 */
 	private Professor toProfessor(ProfessorImport professorImport) {
 		Professor professor = professorRepository.findById(professorImport.getId()).orElseGet(Professor::new);
@@ -85,7 +86,7 @@ public class ProfessorImportService {
 		}
 
 		LoginResponse loginResponse = objectMapper.readValue(response.body(), LoginResponse.class);
-		if (loginResponse.getToken() == null || loginResponse.getToken().isBlank()) {
+		if (loginResponse.token() == null || loginResponse.token().isBlank()) {
 			throw new IllegalStateException("Login da service-account não retornou token");
 		}
 
