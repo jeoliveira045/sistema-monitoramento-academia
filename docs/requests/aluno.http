@@ -25,7 +25,9 @@ GET {{baseUrl}}/alunos?situacao=ATIVO
 ### Buscar aluno por id (com treinos e itens)
 GET {{baseUrl}}/alunos/1
 
-### Atualizar aluno (atualiza o treino 1 e os itens 1, 2 e 3 pelos ids)
+### Atualizar aluno importado (Carlos, id 1) com os dados do monitoramento
+# Rode aluno-import.http antes para o aluno existir. O PUT sobrescreve todos os campos.
+# Treino e itens vão sem id, então são criados a cada execução.
 PUT {{baseUrl}}/alunos/1
 Content-Type: application/json
 
