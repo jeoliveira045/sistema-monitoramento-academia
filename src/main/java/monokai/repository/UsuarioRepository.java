@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,7 @@ import monokai.domain.Usuario;
 public class UsuarioRepository {
 
 	private final NamedParameterJdbcTemplate jdbcTemplate;
+	private final JdbcClient jdbcClient;
 	private final RoleRepository roleRepository;
 
 	@Transactional
@@ -29,6 +31,11 @@ public class UsuarioRepository {
 		}
 		return atualizar(usuario);
 	}
+
+	public List<Usuario> findAll(){
+    	String sql = "SELECT * from USUARIO inner join usuario_roles on USUARIO.id = usuario_roles.usuario_id inner join roles on roles.id = usuario_roles.role_id";
+		return jdbcClient.sql(sql).query(this::mapRow).list();
+  	}
 
 	private Usuario inserir(Usuario usuario) {
 		String sql = "INSERT INTO usuario (username, senha, aluno_id, professor_id) VALUES (:username, :senha, :alunoId, :professorId)";

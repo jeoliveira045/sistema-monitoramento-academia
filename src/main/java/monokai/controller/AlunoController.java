@@ -31,10 +31,7 @@ public class AlunoController {
 
 	@GetMapping
 	public ResponseEntity<List<Aluno>> findAll(@RequestParam(required = false) Situacao situacao) {
-		if (situacao != null) {
-			return ResponseEntity.ok(alunoRepository.findBySituacao(situacao));
-		}
-		return ResponseEntity.ok(alunoRepository.findAll());
+		return ResponseEntity.ok(alunoService.findAll(situacao));
 	}
 
 	@GetMapping("/{id}")

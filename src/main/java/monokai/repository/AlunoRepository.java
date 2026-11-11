@@ -35,6 +35,23 @@ public class AlunoRepository {
 	}
 
 	/**
+	 * Busca os alunos associados ao professor, considerando apenas associações e
+	 * alunos com a situação informada.
+	 */
+	public List<Aluno> findByProfessorIdAndSituacao(Long professorId, Situacao situacao) {
+		return jdbcClient.sql("""
+				SELECT a.*
+				FROM aluno a
+				INNER JOIN professor_aluno pa ON pa.aluno_id = a.id
+				WHERE pa.professor_id = :professorId
+				  AND pa.situacao = :situacao
+				  AND a.situacao = :situacao
+				ORDER BY a.nome, a.sobrenome
+				""").param("professorId", professorId).param("situacao", situacao.getCodigo()).query(this::mapRow)
+				.list();
+	}
+
+	/**
 	 * O id do aluno vem do sistema de usuários, por isso o save faz um upsert:
 	 * insere quando o aluno ainda não existe e atualiza quando já existe.
 	 */

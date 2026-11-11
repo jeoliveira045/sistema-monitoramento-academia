@@ -2,11 +2,14 @@ package monokai.service;
 
 import monokai.domain.Aluno;
 import monokai.domain.ItemExercicio;
+import monokai.domain.Situacao;
+import monokai.domain.Usuario;
 import monokai.repository.AlunoRepository;
 import monokai.repository.ItemExercicioRepository;
 import monokai.repository.TreinoRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -19,6 +22,26 @@ public class AlunoService {
 	private AlunoRepository alunoRepository;
 	private ItemExercicioRepository itemExercicioRepository;
 	private TreinoRepository treinoRepository;
+	private UsuarioLogadoService usuarioLogadoService;
+
+	/**
+	 * Professor vê apenas os seus alunos ativos e aluno vê apenas os próprios
+	 * dados. Os demais usuários (admin, service) veem todos, podendo filtrar por
+	 * situação.
+	 */
+	public List<Aluno> findAll(Situacao situacao) {
+		Usuario usuario = usuarioLogadoService.getUsuarioLogado();
+		if (usuario.isProfessor()) {
+			return alunoRepository.findByProfessorIdAndSituacao(usuario.getProfessorId(), Situacao.ATIVO);
+		}
+		if (usuario.isAluno()) {
+			return List.of(findById(usuario.getAlunoId()));
+		}
+		if (situacao != null) {
+			return alunoRepository.findBySituacao(situacao);
+		}
+		return alunoRepository.findAll();
+	}
 
 	public Aluno findById(Long id) {
 
